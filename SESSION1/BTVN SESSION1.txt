@@ -1,0 +1,13 @@
+﻿Bài tập về nhà
+1.Phân tích vấn đề
+1. Trong bảng,bước quy đổi 1000 ảnh bài giảng bị quy đổi sai
+2. Sinh viên đó đã quy đổi theo hệ thông thường( 1GB=1000 MB) trong khi cần quy đổi theo hệ số 1024( 1GB=1024 MB)
+2.Hoàn thiện bài
+   1.Tính đúng theo hệ:
+    -Bộ công cụ lập trình(40GB)
+    -1000 ảnh bài giảng( 3.91 GB)
+    -50 phim full hd(100 GB)
+—>Tổng dung lượng sử dụng là:143.91 GB
+—> Dung lượng còn lại là:112.09 
+    2.Nếu lưu thêm  bài hát(5MB/bài) thì cần sử dụng                                  2.44GB
+—>Ổ cứng còn đủ dung lượng(còn trống 112.09GB)
