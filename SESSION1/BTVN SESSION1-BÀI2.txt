@@ -1,0 +1,18 @@
+﻿1.Phân tích lỗi
+-Những nhận định sai:
++Gói mạng 100 Mbps tương đương 100 MB/s.
++Do trình duyệt chỉ hiển thị 12.5 MB/s nên nhà mạng chỉ cung cấp 12.5% tốc độ cam kết.
++Nếu mạng giảm xuống 40 Mbps, tải tệp 1 GB sẽ mất khoảng 25 giây.
+-Nguyên nhân:
++Nhầm lẫn đơn vị
++Tính toán sai
++Tính sai thời gian
+2.Hoàn thiện bài
+-Sửa lỗi:
+* 1MB/s=8Mbps
+    —>100Mbps=12.5 MB/s
+     +Trình duyệt hiển thị 12.5 MB/s nên nhà mạng cung cấp 100% tốc độ cam kết
+      +Tốc độ mới khi giảm  xuống 40Mbps:5 MB/s
+         Dung lượng tệp:1GB= 1024MB
+       Thời gian tải thực tế: 204.8s
+       +Kết luận:Nam KHÔNG NÊN khiếu nại nhà mạng. Nhà     mạng vẫn đang cung cấp đúng và đủ 100% tốc độ băng thông theo hợp đồng
