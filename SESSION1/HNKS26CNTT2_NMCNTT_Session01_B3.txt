@@ -1,0 +1,38 @@
+﻿BÀI LÀM BÀI TẬP VỀ NHÀ: TỐI ƯU HIỆU NĂNG HỆ THỐNG
+* Học viên: Tạ Hà Việt
+* Lớp: CNTT2
+PHẦN 1: PHÂN TÍCH VÀ ĐỀ XUẤT GIẢI PHÁP
+1. Sơ đồ luồng IPO của một tab Chrome & Vị trí dữ liệu
+[INPUT]                              ->  [PROCESS]                                 ->  [OUTPUT]
+ • Nhập URL                     • CPU xử lý mã HTML/CSS/JS          • Hiển thị giao diện
+ • Thao tác chuột/phím     • GPU dựng hình (Render)               trang web lên màn hình
+                                         • RAM/Storage quản lý bộ nhớ
+
+
+IVị trí dữ liệu đang nằm trên hệ thống:
+
+
+* Tại RAM (RAM vật lý): Lưu trữ dữ liệu của tab Chrome đang active (đang hiển thị), các tiến trình xử lý DOM, JavaScript Engine (V8), các frame giao diện cần truy xuất tốc độ cao tức thì.
+* * Tại Storage (Ổ cứng / Page File): Lưu trữ trạng thái dữ liệu của các tab Chrome chạy ngầm, các tab lâu chưa kích hoạt (Inactive Tabs) bị hệ điều hành "push" xuống đệm ở bộ nhớ ảo pagefile.sys để nhường RAM cho tác vụ hiện tại.
+2. 3 Hành động cụ thể để giải phóng RAM ngay lập tức
+1. Kích hoạt tính năng Memory Saver hoặc Đóng tab dư thừa: Đóng trực tiếp các tab Chrome không sử dụng (Ctrl + W) hoặc vào Settings > Performance trong Chrome để bật tính năng Memory Saver giúp tự động giải phóng RAM từ các tab ngầm.
+2. End Task tiến trình Chrome tiêu tốn RAM trong Task Manager: Bấm tổ hợp phím Ctrl + Shift + Esc để mở Task Manager (hoặc Shift + Esc trong Chrome), sắp xếp cột Memory giảm dần, chọn các tiến trình tab/extension ngốn nhiều MB nhất và chọn End Task
+3. Khởi động lại trình duyệt / Xóa tiến trình chạy ngầm (Restart Chrome): Nhập chrome://restart vào thanh địa chỉ để khởi động lại nhanh toàn bộ trình duyệt. Thao tác này giúp dọn dẹp sạch sẽ các vùng nhớ bị rò rỉ (Memory Leak) mà các tiện ích mở rộng hoặc script trang web đang chiếm giữ.
+PHẦN 2: TRIỂN KHAI - BÁO CÁO CHẨN ĐOÁN SỨC KHỎE MÁY TÍNH
+Môi trường ghi nhận thực tế từ Task Manager cá nhân:
+
+
+Thông số
+	Giá trị ghi nhận
+	Trạng thái & Đánh giá chẩn đoán
+	% CPU Usage
+	18% - 25%
+	An toàn / Ổn định: CPU đang làm việc ở mức tải nhẹ, đáp ứng tốt các tác vụ văn phòng và học tập.
+	% RAM Usage
+	68%
+	Mức trung bình khá: Hệ thống sử dụng khoảng 10.8 GB / 16 GB RAM. Đủ không gian khả dụng cho các tác vụ hiện tại, chưa chạm ngưỡng Swap trệch.
+	% Disk Usage
+	2% - 8%
+	Tốt / Rất mượt: Ổ cứng SSD không bị nghẽn (No Bottleneck). Tốc độ đọc ghi ngẫu nhiên ổn định, không có hiện tượng treo file system.
+	KẾT LUẬN & ĐỀ XUẤT CHẨN ĐOÁN:
+Hệ thống máy tính hiện tại hoạt động ở trạng thái khỏe mạnh. Tuy nhiên, mức RAM 68% cho thấy nếu mở thêm các công cụ lập trình nặng như VS Code, Docker hoặc các tab Chrome đa phương tiện thì dung lượng RAM sẽ sớm cán mốc 80% - 90%. Đề xuất giữ thói quen dọn dẹp tab ngầm và bật chế độ tự động đóng băng tab trên trình duyệt để tối ưu hiệu năng lâu dài.
